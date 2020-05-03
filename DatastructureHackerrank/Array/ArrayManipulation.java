@@ -1,0 +1,58 @@
+package DatastructureHackerrank.Array;
+
+import java.util.Scanner;
+
+public class ArrayManipulation {
+    public static void main(String[] args) {
+//        int n;
+//        long m, a,b,k,max=0;
+//        Scanner scanner= new Scanner(System.in);
+//        n= scanner.nextInt();
+//        long [] array= new long[n];
+//        m=scanner.nextLong();
+//        for (long i = 0; i < m; i++) {
+//            a= scanner.nextInt();
+//            b=scanner.nextInt();
+//            k= scanner.nextInt();
+//            for (int j =(int)a-1 ; j < b; j++) {
+//                array[j]+=k;
+//                if(array[j]>max){
+//                    max=array[j];
+//                }
+//            }
+//
+//        }
+//        System.out.println(max);
+//
+        Scanner scan= new Scanner(System.in);
+        int n = scan.nextInt();
+        int m = scan.nextInt();
+
+//This will be the "difference array". The entry arr[i]=k indicates that arr[i] is exactly k units larger than arr[i-1]
+        long[] arr = new long[n];
+
+        int lower;
+        int upper;
+        long sum;
+
+        for(int i=0;i<n;i++) arr[i]=0;
+
+        for(int i=0;i<m;i++){
+            lower=scan.nextInt();
+            upper=scan.nextInt();
+            sum=scan.nextInt();
+            arr[lower-1]+=sum;
+            if(upper<n) arr[upper]-=sum;
+        }
+
+        long max=0;
+        long temp=0;
+
+        for(int i=0;i<n;i++){
+            temp += arr[i];
+            if(temp> max) max=temp;
+        }
+
+        System.out.println(max);
+    }
+}
